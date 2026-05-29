@@ -1,0 +1,12 @@
+name: First CI Pipeline
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Message
+        run: echo "Hello Champ! CI/CD is working!"

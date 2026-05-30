@@ -1,12 +1,29 @@
-name: First CI Pipeline
+name: Website CI Pipeline
 
 on:
   push:
 
 jobs:
-  build:
+  validate-website:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Message
-        run: echo "Hello Champ! CI/CD is working!"
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Files
+        run: ls -la
+
+      - name: Verify index.html exists
+        run: test -f index.html
+
+      - name: Verify CSS exists
+        run: test -f style.css
+
+      - name: Verify JS exists
+        run: test -f script.js
+
+      - name: Success Message
+        run: echo "Website validation successful!"
